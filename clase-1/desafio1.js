@@ -3,16 +3,25 @@ class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.libros = libros;
-        this.mascotas = mascota;
+        this.mascotas = mascotas;
     }
-}
+    getFullName() {
+        return `Hola mi nombre es ${this.nombre} ${this.apellido}`
+    }
 
-let cagadita_95 = new Usuario('Santiago', 'Pedraza', [
+}
+let cagadita = new Usuario('Santiago', 'Pedraza', [
     {
         nombreLibro: 'Harry Potter',
         tapa: 'Roja',
         codigo: 11500,
     },
-    ["Pablo", "Federico", "Filipo"]])
+    {
+        nombreLibro: 'El señor de los anillos',
+        tapa: 'azul',
+        codigo: 110,
+    }],
+    ["Pablo", "Federico", "Filipo"])
 
-    
+
+console.log(cagadita.getFullName())
