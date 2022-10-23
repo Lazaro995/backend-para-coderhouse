@@ -39,5 +39,9 @@ let cagadita = new Usuario('Santiago', 'Pedraza', [
     }],
     ["Pablo", "Federico", "Filipo"]);
 
+
+
+cagadita.addMascota(nombreDeMascota = "emanuel")
+cagadita.countMascotas()
     console.log(cagadita)
 
