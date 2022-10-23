@@ -1,14 +1,30 @@
 class Usuario {
-    constructor(nombre, apellido, libros, mascota) {
+    constructor(nombre, apellido, libros, mascotas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.libros = libros;
         this.mascotas = mascotas;
     }
     getFullName() {
-        return `Hola mi nombre es ${this.nombre} ${this.apellido}`
+        console.log(`Hola mi nombre es ${this.nombre} ${this.apellido}`);
+        // Preguntar como hacerlo con return
     }
-
+    addMascota() {
+        this.mascotas.push(nombreDeMascota);
+    }
+    countMascotas() {
+        console.log(`La cantidad de mascotas que tiene es ${this.mascotas.lenght}`);
+        //Preguntar como hacerlo con return
+    }
+    addBook() {
+        this.libros.push({
+            nombre: nombreDelLibro,
+            autor: autorDelLibro,
+        });
+    }
+    getBookNames() {
+        return this.libros.map((libros) => this.libros.nombre) // 
+    }
 }
 let cagadita = new Usuario('Santiago', 'Pedraza', [
     {
@@ -21,7 +37,7 @@ let cagadita = new Usuario('Santiago', 'Pedraza', [
         tapa: 'azul',
         codigo: 110,
     }],
-    ["Pablo", "Federico", "Filipo"])
+    ["Pablo", "Federico", "Filipo"]);
 
+    console.log(cagadita)
 
-console.log(cagadita.getFullName())
