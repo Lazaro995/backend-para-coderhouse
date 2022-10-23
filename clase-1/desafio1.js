@@ -13,7 +13,7 @@ class Usuario {
         this.mascotas.push(nombreDeMascota);
     }
     countMascotas() {
-        console.log(`La cantidad de mascotas que tiene es ${this.mascotas.lenght}`);
+        console.log(`La cantidad de mascotas que tiene es ${this.mascotas.length}`);
         //Preguntar como hacerlo con return
     }
     addBook() {
@@ -43,5 +43,6 @@ let cagadita = new Usuario('Santiago', 'Pedraza', [
 
 cagadita.addMascota(nombreDeMascota = "emanuel")
 cagadita.countMascotas()
-    console.log(cagadita)
+cagadita.addBook( nombreDelLibro= "Mi super planta", autorDelLibro= "Emanuel Brandon" )
+console.log(cagadita)
 
