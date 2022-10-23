@@ -6,24 +6,32 @@ class Usuario {
         this.mascotas = mascotas;
     }
     getFullName() {
-        console.log(`Hola mi nombre es ${this.nombre} ${this.apellido}`);
+        //getFullName(): String. Rertona el completo del usuario. Utilizar template strings.
+        return `Hola mi nombre es ${this.nombre} ${this.apellido}`;
         // Preguntar como hacerlo con return
     }
     addMascota() {
+        //addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas
         this.mascotas.push(nombreDeMascota);
     }
     countMascotas() {
-        console.log(`La cantidad de mascotas que tiene es ${this.mascotas.length}`);
+        //countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario
+        return `La cantidad de mascotas que tiene es ${this.mascotas.length}`;
         //Preguntar como hacerlo con return
     }
     addBook() {
+        /*addBook(String, String):void. Recibe un string'nombre' y un string 'autor'
+        y debe agregar un objeto:{nombre: String, autor: String} al array de libros.*/
         this.libros.push({
             nombre: nombreDelLibro,
             autor: autorDelLibro,
         });
     }
     getBookNames() {
-        return this.libros.map((libros) => this.libros.nombre) // 
+        //getBookNames(): String[]. Retorna un array con solo los nombres del array de libros de usuario.
+        return this.libros.map(function (item) {
+                return item.nombreLibro;
+            });
     }
 }
 let cagadita = new Usuario('Santiago', 'Pedraza', [
@@ -43,6 +51,6 @@ let cagadita = new Usuario('Santiago', 'Pedraza', [
 
 cagadita.addMascota(nombreDeMascota = "emanuel")
 cagadita.countMascotas()
-cagadita.addBook( nombreDelLibro= "Mi super planta", autorDelLibro= "Emanuel Brandon" )
-console.log(cagadita)
+cagadita.addBook(nombreDelLibro = "Mi super planta", autorDelLibro = "Emanuel Brandon")
+cagadita.getBookNames()
 
