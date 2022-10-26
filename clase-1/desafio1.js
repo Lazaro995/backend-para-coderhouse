@@ -10,30 +10,44 @@ class Usuario {
         return `Hola mi nombre es ${this.nombre} ${this.apellido}`;
         // Preguntar como hacerlo con return
     }
-    addMascota() {
+    addMascota(nuevaMascota) {
         //addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas
-        this.mascotas.push(nombreDeMascota);
+        this.mascotas.push(nuevaMascota);
     }
     countMascotas() {
         //countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario
-        return `La cantidad de mascotas que tiene es ${this.mascotas.length}`;
+        return this.mascotas.length;
         //Preguntar como hacerlo con return
     }
-    addBook() {
+    addBook(book, autor) {
         /*addBook(String, String):void. Recibe un string'nombre' y un string 'autor'
         y debe agregar un objeto:{nombre: String, autor: String} al array de libros.*/
         this.libros.push({
-            nombre: nombreDelLibro,
-            autor: autorDelLibro,
+            "nombre": book,
+            "autor": autor,
         });
     }
     getBookNames() {
         //getBookNames(): String[]. Retorna un array con solo los nombres del array de libros de usuario.
-        return this.libros.map(function (item) {
-                return item.nombreLibro;
-            });
+        let nombresLibros = []
+        this.libros.array.forEach(item => nombresLibros.push(item.nombre));
+        return nombresLibros;
+
+    };
+};
+let mascotas = ['cocodrilo', 'cebra']
+let libros = [
+    {
+        "nombre": "Jumanji",
+        "autor": "tuvi"
+    },
+    {
+        "nombre": "Mi planta de naranja lima",
+        "autor": "la lima"
     }
-}
+]
+
+// A
 let cagadita = new Usuario('Santiago', 'Pedraza', [
     {
         nombreLibro: 'Harry Potter',
@@ -49,8 +63,9 @@ let cagadita = new Usuario('Santiago', 'Pedraza', [
 
 
 
-cagadita.addMascota(nombreDeMascota = "emanuel")
+cagadita.addMascota(nombreDeMascota = 'brandon')
 cagadita.countMascotas()
-cagadita.addBook(nombreDelLibro = "Mi super planta", autorDelLibro = "Emanuel Brandon")
+cagadita.addBook('')
 cagadita.getBookNames()
+console.log(cagadita)
 
