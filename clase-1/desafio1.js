@@ -28,15 +28,11 @@ class Usuario {
         });
     }
     getBookNames() {
-        //getBookNames(): String[]. Retorna un array con solo los nombres del array de libros de usuario.
-        let nombresLibros = []
-        this.libros.forEach(item => nombresLibros.push(item.nombre));
-        return nombresLibros;
-
-    };
+        return this.libros.map(item => item.nombre)
+    }
 };
-let mascotas = ['cocodrilo', 'cebra'];
-let libros = [
+const mascotas = ['cocodrilo', 'cebra'];
+const libros = [
     {
         nombre: "Jumanji",
         autor: "tuvi",
@@ -44,11 +40,11 @@ let libros = [
     {
         nombre: "Mi planta de naranja lima",
         autor: "la lima",
-    }
+    },
 ]
 
 // A
-let cagadita = new Usuario('Santiago', 'Pedraza', mascotas, libros);
+let cagadita = new Usuario('Santiago', 'Pedraza', libros, mascotas);
 console.log(cagadita.getFullName());
 // B
 cagadita.addMascota("RATA");
