@@ -10,9 +10,9 @@ class Usuario {
         return `Hola mi nombre es ${this.nombre} ${this.apellido}`;
         // Preguntar como hacerlo con return
     }
-    addMascota(nuevaMascota) {
+    addMascota(newMascota) {
         //addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas
-        this.mascotas.push(nuevaMascota);
+        this.mascotas.push(newMascota);
     }
     countMascotas() {
         //countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario
@@ -23,49 +23,39 @@ class Usuario {
         /*addBook(String, String):void. Recibe un string'nombre' y un string 'autor'
         y debe agregar un objeto:{nombre: String, autor: String} al array de libros.*/
         this.libros.push({
-            "nombre": book,
-            "autor": autor,
+            nombre: book,
+            autor: autor,
         });
     }
     getBookNames() {
         //getBookNames(): String[]. Retorna un array con solo los nombres del array de libros de usuario.
         let nombresLibros = []
-        this.libros.array.forEach(item => nombresLibros.push(item.nombre));
+        this.libros.forEach(item => nombresLibros.push(item.nombre));
         return nombresLibros;
 
     };
 };
-let mascotas = ['cocodrilo', 'cebra']
+let mascotas = ['cocodrilo', 'cebra'];
 let libros = [
     {
-        "nombre": "Jumanji",
-        "autor": "tuvi"
+        nombre: "Jumanji",
+        autor: "tuvi",
     },
     {
-        "nombre": "Mi planta de naranja lima",
-        "autor": "la lima"
+        nombre: "Mi planta de naranja lima",
+        autor: "la lima",
     }
 ]
 
 // A
-let cagadita = new Usuario('Santiago', 'Pedraza', [
-    {
-        nombreLibro: 'Harry Potter',
-        tapa: 'Roja',
-        codigo: 11500,
-    },
-    {
-        nombreLibro: 'El señor de los anillos',
-        tapa: 'azul',
-        codigo: 110,
-    }],
-    ["Pablo", "Federico", "Filipo"]);
-
-
-
-cagadita.addMascota(nombreDeMascota = 'brandon')
-cagadita.countMascotas()
-cagadita.addBook('')
-cagadita.getBookNames()
-console.log(cagadita)
-
+let cagadita = new Usuario('Santiago', 'Pedraza', mascotas, libros);
+console.log(cagadita.getFullName());
+// B
+cagadita.addMascota("RATA");
+cagadita.addMascota("cholo");
+// C
+console.log(cagadita.countMascotas());
+// D
+cagadita.addBook("You dont know about Javascript", "Midudev");
+// E
+console.log(cagadita.getBookNames());
