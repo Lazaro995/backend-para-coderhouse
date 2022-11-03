@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Celular",
+        "price": 100,
+        "thumbail": "https:qwer1234",
+        "id": 1
+    },
+    {
+        "title": "pc",
+        "price": 150,
+        "thumbail": "https:qwer1234",
+        "id": 2
+    }
+]
