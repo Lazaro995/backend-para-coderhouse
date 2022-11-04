@@ -4,7 +4,7 @@ class Contenedor {
     constructor(file) {
         this.file = file;
     }
-    writeFile = async data => {
+    async writeFile(data) {
         try {
             await fs.promises.writeFile(
                 this.file, JSON.stringify(data, null, 2)
@@ -14,18 +14,17 @@ class Contenedor {
         }
     }
 
-    getAll = async () => {
+    async getAll() {
         try {
             const productos = await fs.promises.readFile(this.file, 'utf-8')
             return JSON.parse(productos);
         } catch (err) {
-            if (err.message.includes('no hay tal archivo en el directorio')) return [];
             console.log(`error: ${err}`);
         }
     }
 
-    save = async obj => {
-        let productos = this.getAll();
+    async save() {
+        let productos = await this.getAll();
         try {
             let newId;
             productos.length === 0 ? newId = 1 : newId = productos[productos.length - 1].id + 1;
@@ -38,33 +37,41 @@ class Contenedor {
             console.log(`error: ${err}`);
         }
     }
-    getById = async id => {
-        let productos = await this.getAll();
-        try {
-            const obj = productos.find(id => productos.id === id);
-            return obj ? obj : null;
-        } catch (err) {
-            console.log(`error: ${err}`);
+    getById = async (id) => {
+        if (!id) return { status: 'error', message: 'se requiere ID' }
+        if (fs.existsSync(productFile)) {
+            let data = await fs.promises.readFile(this.file, 'utf-8')
+            let products = JSON.parse(data)
+            let product = products.find(product => product.id === id)
+            if (product) return console.log({ status: 'Perfecto', message: product })
+            return console.log({ status: 'error', message: 'No se reconoce el ID' })
+        } else {
+            return console.log({ status: 'error', message: err.message })
         }
     }
-    deleteById = async id => {
+    async deleteById() {
         let productos = await this.getAll();
         try {
-            productos = productos.filter(producto => producto.id != id);
+            productos = productos.filter(producto => producto.id !== id);
             await this.writeFile(productos);
         } catch (err) {
             console.log(`error: ${err}`);
         }
     }
-    deleteAll = async () => {
-        this.writeFile([])
+    async deleteAll() {
+        try {
+            await this.writeFile([])
+        }
+        catch (err) {
+            console.log(`error: ${err}`);
+        }
     }
 }
 module.exports = Contenedor;
 
-const products = new Contenedor(products.txt');
+const products = new Contenedor('products.txt');
 
-const test = async() =>{
+async function test() {
     let save = await products.save({
         title: 'tele',
         price: 45,
@@ -79,6 +86,6 @@ const test = async() =>{
     console.log(getById);
     console.log(deleteById);
     console.log(deleteAll);
-};
+}
 
 test();
