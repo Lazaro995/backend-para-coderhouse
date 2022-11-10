@@ -1,5 +1,5 @@
 const express = require('express');
-const Contenedor = require('../clase-4/contenedor')
+const Contenedor = require('./Contenedor')
 const app = express();
 const PORT = 8080;
 
@@ -16,8 +16,8 @@ app.get('/productos', async (req, res) => {
     res.send(productos);
 });
 
-app.get('productoRandom', async (req, res) => {
+app.get('/productoRandom', async (req, res) => {
     const productos = await products.getAll();
-    let randomNumber = math.floor(math.random() * productos.lenght);
+    let randomNumber = Math.floor(Math.random() * productos.lenght);
     res.send(productos[randomNumber])
 })
