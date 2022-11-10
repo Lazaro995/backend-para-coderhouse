@@ -2,25 +2,19 @@
     {
         'title':'Colchon',
         'price': '75000',
-        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152'
-        'id':1
-
-
+        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152',
+        'id':1,
     }
     {
         'title':'sabanas',
         'price': '10000',
-        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152'
-        'id':2
-
-
+        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152',
+        'id':2,
     }
     {
         'title':'almohada',
         'price': '5000',
-        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152'
-        'id':3
-
-
+        'thumbnail':'https://wallpaperaccess.com/download/thumbnail-3458152',
+        'id':3,
     }
 ]

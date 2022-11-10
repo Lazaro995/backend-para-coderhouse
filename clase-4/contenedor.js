@@ -18,9 +18,10 @@ class Contenedor {
         try {
             const productos = await fs.promises.readFile(this.file, 'utf-8')
             return JSON.parse(productos);
-        } catch (err) {
-            console.log(`error: ${err}`);
-        }
+        } catch (error) {
+			if (error.code==="ENOENT") return [];
+			else console.log(error.message);
+		}
     }
 
     async save() {
@@ -37,18 +38,15 @@ class Contenedor {
             console.log(`error: ${err}`);
         }
     }
-    getById = async (id) => {
-        if (!id) return { status: 'error', message: 'se requiere ID' }
-        if (fs.existsSync(productFile)) {
-            let data = await fs.promises.readFile(this.file, 'utf-8')
-            let products = JSON.parse(data)
-            let product = products.find(product => product.id === id)
-            if (product) return console.log({ status: 'Perfecto', message: product })
-            return console.log({ status: 'error', message: 'No se reconoce el ID' })
-        } else {
-            return console.log({ status: 'error', message: err.message })
-        }
-    }
+    async getById(id) {
+		const objs = await this.getAll();
+		try {
+			const obj = objs.find(obj => obj.id === id);
+			return obj ? obj : null;
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
     async deleteById() {
         let productos = await this.getAll();
         try {
@@ -89,5 +87,4 @@ async function test() {
 }
 
 test();
-
 module.exports = Contenedor;
