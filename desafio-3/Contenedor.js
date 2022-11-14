@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 class Contenedor {
     constructor(file) {
         this.file = file;
@@ -15,7 +17,7 @@ class Contenedor {
     async getAll() {
         try {
             const productos = await fs.promises.readFile(this.file, 'utf-8')
-            return JSON.parse(productos);
+            return JSON.parse(fs.readFileSync(path(__dirname,'./products.txt')));
         } catch (error) {
 			if (error.code==="ENOENT") return [];
 			else console.log(error.message);
@@ -63,3 +65,4 @@ class Contenedor {
         }
     }
 }
+module.exports = Contenedor
