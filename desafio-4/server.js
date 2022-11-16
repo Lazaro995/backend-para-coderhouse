@@ -15,11 +15,11 @@ class Contenedor {
   constructor(nombreArchivo) {
     this.nombreArchivo = nombreArchivo;
     if (fs.existsSync(nombreArchivo)) {
-      console.log("Existen productos, importandolos...");
+      console.log("Ya hay archivos, importemos");
       this.arrayObj = JSON.parse(fs.readFileSync(this.nombreArchivo, "utf-8"));
       this.nextId = this.#getNextId();
     } else {
-      console.log("No existe archivo de productos, creandolo...");
+      console.log("No hay archivo de productos, creando");
       this.nextId = 0;
       fs.writeFileSync(this.nombreArchivo, JSON.stringify(this.arrayObj));
     }
@@ -33,7 +33,7 @@ class Contenedor {
           this.nombreArchivo,
           JSON.stringify(this.arrayObj)
         );
-        console.log("se guardo" + object.id);
+        console.log("Guardado" + object.id);
         this.nextId++;
         return Promise.resolve(object.id);
       } else {
@@ -68,10 +68,10 @@ class Contenedor {
         this.nombreArchivo,
         JSON.stringify(this.arrayObj)
       );
-      console.log("se actualizo");
+      console.log("Actualizado");
       return Promise.resolve(id);
     } else {
-      console.log("no existe el id");
+      console.log("No existe el id");
     }
   }
 
@@ -136,13 +136,13 @@ class Contenedor {
           this.nombreArchivo,
           JSON.stringify(this.arrayObj)
         );
-        console.log("borro");
+        console.log("Borrado");
         return id;
       } catch (err) {
         console.log(err);
       }
     } else {
-      console.log("No se borro objeto pq no existe el ID");
+      console.log("No se borro objeto. No existe el id");
       return null;
     }
   }
@@ -154,7 +154,7 @@ class Contenedor {
         this.nombreArchivo,
         JSON.stringify(this.arrayObj)
       );
-      console.log("borro todo");
+      console.log("Todo deleteado");
     } catch (err) {
       console.log(err);
     }
