@@ -191,7 +191,7 @@ routerProductos.post("/productos", async (req, res) => {
     const productoNuevoId = await contenedorProductos.save(producto);
     productoNuevoId
       ? res.json({ ...producto, id: productoNuevoId })
-      : res.json({ error: "Producto no encontrado" });
+      : res.json({ error: "Este producto ya existe" });
   } catch (error) {
     console.log(error);
   }
